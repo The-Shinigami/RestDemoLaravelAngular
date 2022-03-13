@@ -1,0 +1,51 @@
+<div class="container my-12 mx-auto px-4 md:px-12">
+
+  <!-- add product button component -->
+  <app-add-product (resetListProducts)=getProducts()></app-add-product>
+
+  <div class="flex flex-wrap -mx-1 lg:-mx-4">
+
+    <!-- Column -->
+    <div *ngFor="let product of products" class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+
+      <!-- Article -->
+      <article class="overflow-hidden rounded-lg shadow-lg">
+
+        <a href="#">
+          <img alt="Placeholder" class="block h-auto w-full" src="https://picsum.photos/600/400/?random">
+        </a>
+
+        <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+          <h1 class="text-lg">
+            <div class="no-underline text-black">
+              <strong> Product name :</strong> {{product.name}}
+            </div>
+          </h1>
+          <p class="text-grey-darker text-sm">
+            <strong>{{product.created_at.substring(0,10)}}</strong>
+          </p>
+        </header>
+
+        <footer class="flex items-center justify-between leading-none p-2 md:p-4 bg-purple-300">
+          <div class="flex items-center no-underline  text-black">
+
+            <!-- like button component -->
+            <!-- getProducts($event) -->
+            <app-like-product (resetListProducts)=getProducts() [productForLike]=product></app-like-product>
+
+            <p class="ml-2 text-sm">
+              <strong>Description : </strong>
+              {{product.description}}
+            </p>
+          </div>
+
+        </footer>
+
+      </article>
+      <!-- END Article -->
+
+    </div>
+    <!-- END Column -->
+
+  </div>
+</div>

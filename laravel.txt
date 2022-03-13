@@ -1,0 +1,26 @@
+//create project
+laravel new restBackend
+
+//create migration(database table)
+php artisan make:migration create_products_table
+//migrate
+php artisan migrate
+
+php artisan make:model Product
+
+//create products controller(resource controller)
+php artisan make:controller productsController --resource
+
+//setup sanctum authentification
+// chose the convenient version
+https://laravel.com/docs/8.x/sanctum
+//sanctum for spa
+.. app/Http/Kernel.php
+'api' => [
+    \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+    'throttle:api',
+    \Illuminate\Routing\Middleware\SubstituteBindings::class,
+],
+
+//create user constroller
+php artisan make:controller usersController --resource

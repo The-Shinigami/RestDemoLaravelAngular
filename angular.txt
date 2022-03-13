@@ -1,0 +1,42 @@
+//create project
+ng new restFrontend --routing default
+
+//install axios for rest requests
+npm install axios
+
+//create service
+ng generate service services /products/ProductService
+
+//create component
+ng generate component productsPage/listProducts
+
+//install and setup tailwwind
+npm install -D tailwindcss
+ng add @ngneat/tailwind
+npx tailwindcss init
+... style.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+...tailwind.configue.js
+module.exports = {
+  mode: 'jit',
+   purge: {
+      enabled: true,
+      content: ['./src/**/*.{html,ts}']
+},
+  content: [],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+//add FormModule
+.. app.module.ts
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+imports: [
+    ...
+    FormsModule,
+    ReactiveFormsModule
+  ],
